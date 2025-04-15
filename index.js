@@ -69,13 +69,14 @@ partyForm.addEventListener("submit", async (event) =>{
 
 partyList.addEventListener("click", async (event) =>{
   if(event.target.classList.contains("deleteButton")){
-    const partyID = event.target.name
+    const partyID = event.target.id
     try{
       const response = await fetch (`https://fsa-crud-2aa9294fe819.herokuapp.com/api/2501-ftb-et-web-pm/events/${partyID}`,{
           method: "DELETE"
       })
       //console.log(response)
-      parties.slice(event.target.name)
+      parties.splice(event.target.name, 1)
+      render ()
      } catch (error){
       console.error(error)
     }
